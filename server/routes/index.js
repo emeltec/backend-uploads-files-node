@@ -11,6 +11,10 @@ module.exports = () => {
 
   router.get('/files/:fileName', filesController.deleteFile);
 
+  router.get('/files/:fileName/:newName', filesController.renameFileGet);
+
+  router.put('/files', filesController.renameFilePut); 
+
   router.get('/', homeController.home)
 
   return router;

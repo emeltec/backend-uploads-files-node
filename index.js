@@ -8,6 +8,9 @@ const PORT = process.env.PORT || 3000;
 // SERVIDOR
 const app = express();
 
+app.use(express.urlencoded({extended:false}));
+app.use(express.json());
+
 // Habilitar CORS
 app.use(cors());
 

@@ -1,0 +1,10 @@
+GET http://localhost:3000/files
+
+###
+PUT http://localhost:3000/files
+
+{
+  "fileName": "1YUWaAA_J.jpeg",
+  "newName": "xxxxx.jpeg"
+}
+

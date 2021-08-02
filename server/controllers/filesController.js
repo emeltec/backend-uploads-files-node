@@ -1,6 +1,8 @@
 const multer = require('multer');
 const fs = require('fs');
-const shortid = require('shortid')
+const shortid = require('shortid');
+
+const DIR_FILES = __dirname+'.../../uploads/';
 
 const configuracionMulter = {
   storage: fileStorage = multer.diskStorage({
@@ -54,5 +56,31 @@ exports.deleteFile = (req, res) => {
     return;
   } catch (error) {
     res.json({mensaje: 'Error al eliminar el archivo'})
+  }
+}
+
+exports.renameFileGet = (req, res) => {
+  const {fileName, newName} = req.params;
+  console.log(fileName, newName);
+
+  try {
+    fs.renameSync(DIR_FILES+fileName, DIR_FILES+newName);
+      res.json({mensaje: 'El archivo fue renombrado'});
+      return;
+  } catch (error) {
+    res.json({mensaje: 'Error al renombrar el archivo'})
+  }
+}
+
+exports.renameFilePut = (req, res) => {
+  const {fileName, newName,} = req.body;
+  console.log(newName, fileName);
+  
+  try {
+    fs.renameSync(DIR_FILES+fileName, DIR_FILES+newName);
+      res.json({mensaje: 'El archivo fue renombrado'});
+      return;
+  } catch (error) {
+    res.json({mensaje: 'Error al renombrar el archivo'})
   }
 }
