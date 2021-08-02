@@ -28,7 +28,7 @@ exports.uploadFiles = (req, res, next) => {
       })
     }
     res.json({
-      mensaje: 'File uploaded successfully'
+      mensaje: 'Archivo cargado exitosamente'
     })
   })
 }
@@ -75,7 +75,7 @@ exports.renameFileGet = (req, res) => {
 exports.renameFilePut = (req, res) => {
   const {fileName, newName,} = req.body;
   console.log(newName, fileName);
-  
+
   try {
     fs.renameSync(DIR_FILES+fileName, DIR_FILES+newName);
       res.json({mensaje: 'El archivo fue renombrado'});
